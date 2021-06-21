@@ -7,6 +7,7 @@ const PORT = process.env.PORT;
 const mongoose = require('mongoose');
 const seedUserData = require('./models/user.model')
 const bookController = require('./controllers/book.controller')
+app.use(cors())
 
 mongoose.connect('mongodb://localhost:27017/myFavoriteBooks',
     { useNewUrlParser: true, useUnifiedTopology: true }
