@@ -4,11 +4,18 @@ const axios = require('axios');
 const cors = require('cors');
 require('dotenv').config();
 const PORT = process.env.PORT;
+const mongoose = require('mongoose');
+const seedUserData = require('./models/user.model')
+const bookController = require('./controllers/book.controller')
 
-// a server endpoint 
-app.get('/', // our endpoint name
- function (req, res) { // callback function of what we should do with our request
-  res.send('Hello World') // our endpoint function response
+mongoose.connect('mongodb://localhost:27017/myFavoriteBooks',
+    { useNewUrlParser: true, useUnifiedTopology: true }
+);
+seedUserData();
+
+app.get('/',
+ function (req, res) { 
+  res.send('Hello World') 
 })
- 
-app.listen(PORT) // kick start the express server to work
+app.get('/books', bookController);
+app.listen(PORT);
