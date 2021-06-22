@@ -9,7 +9,7 @@ const userModel = mongoose.model('users',userSchema)
 
 const seedUserData = ( ) => {
 const newUser= new userModel ({
-    email:'yaser.ananbeh74@gmail.com',
+    email:'mohammad.alsaify@gmail.com',
     books:[
         {
             name: 'In Search of Lost Time by Marcel Proust',
@@ -32,4 +32,7 @@ console.log(newUser);
 newUser.save();
 }
 
-module.exports = userModel;
+module.exports = {
+    seedUserData,
+    userModel
+};
